@@ -1,0 +1,77 @@
+<html>
+
+<head>
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+        }
+
+        .text {
+            font-size: 800px;
+            display: inline-block;
+            white-space: nowrap;
+            position: absolute;
+            left: 0px;
+        }
+
+        .letter {
+            /*width: 300px;*/
+            float: none;
+            /*display: inline-block;*/
+        }
+
+        .main {
+            overflow: hidden;
+            /* width: 100%; */
+            height: 100%;
+            position: relative;
+            width: 1920px;
+            top: 0px;
+            left: 0px;
+            transform-origin: 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="text">
+                <span>&nbsp;&nbsp;HAPPY DIWALI&nbsp;&nbsp;</span>
+        </div>
+    </div>
+
+
+    <script>
+        var screenWidth = 1920;
+        var id = prompt("your id:", "");
+
+
+
+        setInterval(function () {
+            var scrollWidth = (document.getElementsByClassName("text")[0].clientWidth + screenWidth);
+            var counter = (parseInt(new Date().getTime() / 10) % scrollWidth);
+
+            var idMargin = screenWidth * (id - 1);
+
+            var margin = idMargin + screenWidth - counter;
+            margin = margin > screenWidth ? margin - scrollWidth : margin;
+            //console.log(margin);
+            document.getElementsByClassName("text")[0].style.marginLeft = "calc(" + margin + "px)";
+
+        }, 5);
+
+        var width = window.innerWidth / screenWidth;
+        document.getElementsByClassName("main")[0].style.transform = "scale(" + width + ", " + width + ")";
+
+
+    </script>
+</body>
+
+</html>
